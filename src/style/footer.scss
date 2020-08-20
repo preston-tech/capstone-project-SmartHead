@@ -1,0 +1,57 @@
+.footer {
+    background: linear-gradient(90deg,
+    rgb(119, 83, 89) 0%,
+    rgb(60, 83, 82) 26.06%,
+    rgb(86, 116, 95) 52.08%,
+    rgb(109, 99, 83) 78.3%);
+
+    padding: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+.footer img {
+    width: 10%;
+}
+
+.footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.explore a {
+    text-decoration: none;
+    color: #301b04;
+}
+
+.explore {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-spacing: 8px;
+
+}
+
+.brain-health a {
+    text-decoration: none;
+    color: #301b04;
+}
+
+.brain-health {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-spacing: 8px;
+}
+
+img {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.brain-health-footer a {
+    text-decoration: none;
+    color: #301b04;
+}
