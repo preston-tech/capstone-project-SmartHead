@@ -1,51 +1,37 @@
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom';
-import {Navbar, Nav} from 'react-bootstrap';
 
-export class Navigation extends Component {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+export default class NavigationComponent extends Component {
+  constructor() {
+    super();
+  }
+
   render(){
     return(
-      <Navbar>
-        <Nav>
-          <div className="nav-wrapper">
-            <div className="nav-link-wrapper">
-              <NavLink exact to="/" activeClassName="nav-link-active">
-                Home
-              </NavLink>
-            </div>
+      <div className="navbar-wrapper">
+        <div className="nav-bar">
+          <h1>Smart Head</h1>
+            <div className="nav-links">
+              <NavLink to="/">Home</NavLink>
+              <NavLink className="active" to="/scheduling">Scheduling</NavLink>
+              <NavLink className="active" to="/blog">Blog</NavLink>
 
-            <div className="nav-link-wrapper">
-              <NavLink exact to="/scheduling" activeClassName="nav-link-active">
-                SH Schedule
-              </NavLink>
-            </div>
+              {this.props.loggedInStatus === "LOGGED_IN" ? (
+                dynamicLink("/blog-manager", "Blog Manager")
+              ) : null}
+              </div>
 
-            <div className="nav-link-wrapper">
-              <NavLink exact to="/store" activeClassName="nav-link-active">
-                SH Store
-              </NavLink>
-            </div>
+            <div className="auth-login">
+              Tonya Remillard
 
-            <div className="nav-link-wrapper">
-              <NavLink exact to="/school" activeClassName="nav-link-active">
-                SH School
-              </NavLink>
+              {this.props.loggedInStatus === 'LOGGED_IN' ? <a onClick={handleSignOut}>
+                <FontAwesomeIcon icon="sign-out-alt" />
+              </a> : null}
             </div>
-
-            <div className="nav-link-wrapper">
-              <NavLink exact to="/sciences" activeClassName="nav-link-active">
-                sciences
-              </NavLink>
-            </div>
-
-            <div className="nav-link-wrapper">
-              <NavLink exact to="/blog" activeClassName="nav-link-active">
-                Blog
-              </NavLink>
-            </div>
-          </div>
-        </Nav>
-      </Navbar>
+        </div>
+      </div>
     )
   }
-}
+} 

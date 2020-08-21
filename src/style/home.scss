@@ -16,6 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    // height: 100vh;
 }
 
 .center img {
@@ -25,11 +26,13 @@
 .center h1{
     font-size: 100px;
     margin: 25px;
+    color: #0079c7;
 }
 
 .center h2 {
     font-size: 77px;
     margin: 0;
+    color: #0079c7;
 }
 
 .center p {
