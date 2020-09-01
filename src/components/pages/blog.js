@@ -1,29 +1,47 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+import BlogItem from "../blog/blog-item";
+import BlogModal from "../modal/blog-modal";
 
 class Blog extends Component {
   constructor() {
     super();
 
     this.state = {
+      id: [],
       blogItems: [],
       totalCount: 0,
       currentPage: 0,
-      isLoading: true
-    }
+      isLoading: true,
+      blogModalIsTrue: false
+    };
 
     this.getBlogItems = this.getBlogItems.bind(this);
-    this.handleNewBlogClick = this.handleNewBlogClick.bind(this);
     this.onScroll = this.onScroll.bind(this);
     window.addEventListener("scroll", this.onScroll, false)
+    this.handleNewBlogClick = this.handleNewBlogClick.bind(this);
+    this.handleModalClose = this.handleModalClose.bind(this);
     this.handleSuccessfulNewBlogSubmission = this.handleSuccessfulNewBlogSubmission.bind(this);
   }
 
   handleSuccessfulNewBlogSubmission() {
     this.setState({
       blogModalIsOpen: false,
-      // blogItems: [blog].concat(this.state.blogItems)
+      blogItems: [blog].concat(this.state.blogItems)
+    });
+  }
+
+  handleModalClose() {
+    this.setState({
+      blogModalIsOpen: false
+    })
+  }
+  
+  handleNewBlogClick() {
+    this.setState({
+      blogModalIsOpen: true
     })
   }
 
@@ -38,7 +56,7 @@ class Blog extends Component {
       window.innerHeight + document.documentElement.scrollTop ===
       document.documentElement.offsetHeight
     ) {
-      this.getBlogItems;
+      this.getBlogItems();
     }
   };
 
@@ -47,18 +65,18 @@ class Blog extends Component {
       currentPage: this.state.currentPage + 1
     });
     axios
-      .get(`https://localhost:5000?page=${this
+      .get(`https://tonya.devcamp.space/portfolio/portfolio_blogs?page=${this
       .state.currentPage}`,
       {
         withCredentials: true
       })
       .then(response => {
         console.log("getting", response.data);
+
         this.setState({
           blogItems: this.state.blogItems.concat(
-            response.data.portfolio_blogs
+            response.data
           ),
-          totalCount: response.data.meta.total_records,
           isLoading: false
         });
       })
@@ -67,13 +85,7 @@ class Blog extends Component {
       });
   }
 
-  handleNewBlogClick() {
-    this.setState({
-      blogModalIsOpen: true
-    })
-  }
-
-  componnetWillMount() {
+  componentDidMount() {
     this.getBlogItems();
   }
 
@@ -83,29 +95,34 @@ class Blog extends Component {
 
   render() {
     const blogRecords = this.state.blogItems.map(blogItem => {
-      return <Blog key={blogItem.id} blogItem = {blogItem} />;
+      return <BlogItem key={blogItem} blogItem={blogItem} />;
     });
 
     return (
       <div className="blog-container">
-        <div className="introduction">
-          {this.props.loggedInStatus === "LOGGED_IN" ? (
-            <div className="new-blog-link">
-              <a onClick={this.handleNewBlogClick}>
-                <FontAwesomeIcon icon="plus-circle" />
-              </a>
-            </div>
-          ) : null}
-          <div className="content-container">
-            {blogRecords}
-          </div>
+        <BlogModal
+        handleSuccessfulNewBlogSubmission={
+          this.handleSuccessfulNewBlogSubmission
+        } 
+        handleModalClose={this.handleModalClose}
+        modalIsOpen={this.state.blogModalIsOpen} />
 
-          {this.state.isLoading ? (
-            <div className="content-loader">
-              <FontAwesomeIcon icon="spinner" spin />
-            </div>
-          ) : null}
+        {this.props.loggedInStatus === "LOGGED_IN" ? (
+          <div className="new-blog-link">
+            <a onClick={this.handleNewBlogClick}>
+              <FontAwesomeIcon icon="plus-circle" />
+            </a>
+          </div>
+        ) : null}
+        <div className="content-container">
+          {blogRecords}
         </div>
+
+        {this.state.isLoading ? (
+        <div className="content-loader">
+          <FontAwesomeIcon icon="spinner" spin />
+        </div>
+        ) : null}
       </div>
     )
   }

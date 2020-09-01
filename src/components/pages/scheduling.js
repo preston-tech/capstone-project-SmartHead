@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import Calender from "../Scheduling/calender";
+
 export default class Scheduling extends Component {
   constructor() {
     super();
@@ -7,8 +9,8 @@ export default class Scheduling extends Component {
 
   render(){
     return(
-      <div>
-        
+      <div className="schedule-container">
+        <Calender/>
       </div>
     )
   }

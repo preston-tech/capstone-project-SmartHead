@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
-import {NavLink, withRouter} from 'react-router-dom';
-
+import React from "react";
+import axios from 'axios';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Navbar from './navigation';
+
+import { withRouter } from 'react-router';
+import { NavLink } from "react-router-dom";
 
 const NavigationComponent = (props) => {
   const dynamicLink = (route, linkText) => {
@@ -12,11 +13,11 @@ const NavigationComponent = (props) => {
           {linkText}
         </NavLink>
       </div>
-    )
-  }
+    );
+  };
 
   const handleSignOut = () => {
-    axios.delete("https://localhost:5000/logout", {withCredentials : true})
+    axios.delete("https://api.devcamp.space/logout", {withCredentials : true})
     .then(response => {
       if (response.status === 200) {
         props.history.push("/");
@@ -32,23 +33,25 @@ const NavigationComponent = (props) => {
   return(
     <div className="navbar-wrapper">
       <div className="nav-bar">
-        <h1>Smart Head</h1>
+        
+        <h1>Smart Head Co.</h1>
           <div className="nav-links">
             <NavLink to="/">Home</NavLink>
             <NavLink className="active" to="/scheduling">Scheduling</NavLink>
             <NavLink className="active" to="/blog">Blog</NavLink>
 
-            {this.props.loggedInStatus === "LOGGED_IN" ? (
+            {props.loggedInStatus === "LOGGED_IN" ? (
               dynamicLink("/blog-manager", "Blog Manager")
             ) : null}
-            </div>
+          </div>
 
           <div className="auth-login">
             Tonya Remillard
 
-            {this.props.loggedInStatus === 'LOGGED_IN' ? <a onClick={handleSignOut}>
+            {props.loggedInStatus === 'LOGGED_IN' ? <a onClick={handleSignOut}>
               <FontAwesomeIcon icon="sign-out-alt" />
             </a> : null}
+
           </div>
       </div>
     </div>

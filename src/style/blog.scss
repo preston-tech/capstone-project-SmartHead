@@ -1,0 +1,19 @@
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+
+    .new-blog-link {
+        position: fixed;
+        right: 0;
+        left: 0;
+
+        a {
+            font-size: 3em;
+            cursor: pointer;
+            color: lightcoral;
+        }
+    }
+    
+}

@@ -12,7 +12,7 @@ export default class BlogForm extends Component {
       blog_status: "",
       content: "",
       featured_image: "",
-      apiUrl: "https://localhost:3000",
+      apiUrl: "https://tonya.devcamp.space/portfolio/portfolio_blogs",
       apiAction: "post"
     };
 
@@ -29,7 +29,7 @@ export default class BlogForm extends Component {
   deleteImage() {
     axios
       .delete(
-        `https://localhost:5000/delete-blog-image/${
+        `https://tonya.devcamp.space/portfolio/portfolio_blogs/${
           this.props.blog.id
         }`,
         { withCredentials: true }
@@ -49,7 +49,7 @@ export default class BlogForm extends Component {
         title: this.props.blog.title,
         blog_status: this.props.blog.blog_status,
         content: this.props.blog.content,
-        apiUrl: `https://localhost:5000/${
+        apiUrl: `https://tonya.devcamp.space/portfolio/portfolio_blogs/${
           this.props.blog.id
         }`,
         apiAction: "patch"

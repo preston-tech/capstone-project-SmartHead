@@ -10,8 +10,9 @@ import Navbar from './navigation/nav-bar';
 
 import Login from './auth/login';
 import Auth from './pages/auth';
-import NavigationComponent from './navigation/navigation';
 import Icons from "../components/helper/icons";
+import NavigationComponent from "../components/navigation/nav-bar";
+import BlogManager from "./pages/blog-manager";
 
 export default class App extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ export default class App extends Component {
 
   checkLoginStatus() {
     return axios 
-      .get("https://localhost:5000/logged_in", {
+      .get("http://tonya.devcamp.space/logged_in", {
         withCredentials: true
       })
       .then(response => {
@@ -83,14 +84,17 @@ export default class App extends Component {
         path="/blog-manager"
         component={BlogManager}
       />
-    ]
+    ];
   }
 
   render() {
     return (
       <BrowserRouter>
         <div>
-          <NavigationComponent/>
+          <NavigationComponent
+            loggedInStatus={this.state.loggedInStatus}
+            handleSuccessfulLogout={this.handleSuccessfulLogout}
+          />
           <div className='container'>
             <Switch>
               <Route
@@ -105,7 +109,25 @@ export default class App extends Component {
               />
               <Route exact path="/" component={Home} />
               <Route path="/scheduling" component={Scheduling} />
-              <Route path="/blog" component={Blog} />
+
+              <Route path="/blog" 
+              render={props => (
+                <Blog {...props} loggedInStatus={this.state.loggedInStatus}/>
+              )}
+              />
+
+              <Route
+              path="/b/:slug"
+              render={props => (
+                <BlogDetail {...props} loggedInStatus={this.state.loggedInStatus}
+                />
+              )}
+              />
+              {this.state.loggedInStatus === "LOGGED_IN" ? (
+                this.authorizedPages()
+              ) : null}
+              <Route exact path="/blog/b/:slug" component={Blog} />
+
             </Switch>
           </div>
           <Footer />

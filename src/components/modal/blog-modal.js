@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactModal from "react-modal";
-
-import Blog from "../pages/blog";
+import BlogForm from "../blog/blog-form";
 
 ReactModal.setAppElement(".app-wrapper");
 
@@ -24,6 +23,10 @@ export default class BlogModal extends Component {
     };
 
     this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this);
+  }
+
+  handleSuccessfulFormSubmission(blog) {
+    this.props.handleSuccessfulFormSubmission(blog)
   }
 
   render() {

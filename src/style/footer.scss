@@ -22,13 +22,15 @@
 }
 
 .explore a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     color: #301b04;
 }
 
 .explore {
     display: flex;
-    flex-direction: row;
     align-items: center;
     border-spacing: 8px;
 
