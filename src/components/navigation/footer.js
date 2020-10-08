@@ -12,8 +12,9 @@ export default class Footer extends Component {
         <div className="footer-wrapper">
         <img src={Logo}/>
           <div className="explore">
-            <h2>Explore</h2>               
-            <a href="#">
+            <h2>Explore</h2> 
+            <div className="explore-links">
+              <a href="#">
                 Home
               </a>
 
@@ -24,6 +25,7 @@ export default class Footer extends Component {
               <a href="#">
                 Blog
               </a>
+            </div>  
           </div>
 
           <div className="brain-health">

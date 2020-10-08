@@ -33,8 +33,6 @@ const NavigationComponent = (props) => {
   return(
     <div className="navbar-wrapper">
       <div className="nav-bar">
-        
-        <h1>Smart Head Co.</h1>
           <div className="nav-links">
             <NavLink to="/">Home</NavLink>
             <NavLink className="active" to="/scheduling">Scheduling</NavLink>

@@ -9,51 +9,59 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    text-align: center;
 }
 .footer img {
     width: 10%;
+    margin-left: 10px;
 }
 
 .footer-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-}
-
-.explore a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: #301b04;
 }
 
 .explore {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-spacing: 8px;
 
-}
-
-.brain-health a {
-    text-decoration: none;
-    color: #301b04;
+    a {
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+    }
 }
 
 .brain-health {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    border-spacing: 8px;
+
+    .brain-health-footer {
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+    }
 }
 
-img {
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
+// .brain-health a {
+//     text-decoration: none;
+//     color: #301b04;
+// }
 
-.brain-health-footer a {
-    text-decoration: none;
-    color: #301b04;
-}
+// .brain-health {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     border-spacing: 8px;
+// }
+
+// img {
+//     margin-top: 15px;
+//     margin-bottom: 15px;
+// }
+
+// .brain-health-footer a {
+//     text-decoration: none;
+//     color: #301b04;
+// }

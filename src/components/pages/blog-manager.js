@@ -18,7 +18,7 @@ export default class BlogManager extends Component {
     this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleEditClick = this.handleEditClick.bind(this);
-    this.clearBlogToEdit = this.clearPortfolioToEdit.bind(this);
+    this.clearBlogToEdit = this.clearBlogToEdit.bind(this);
 
   }
 

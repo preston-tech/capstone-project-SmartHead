@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Logo from "../../../static/assets/images/smart-head.png";
+
 
 export default class Home extends Component {
   constructor() {
@@ -14,6 +16,7 @@ export default class Home extends Component {
       <div className="home-wrapper">
         <div className="home-page">
           <div className="left">
+            <img src={Logo} />
             <div className="center">
               <h1>Smart Head Co.</h1>
               <h2>A Brain Smart Community</h2>
@@ -42,31 +45,57 @@ export default class Home extends Component {
         </div>
 
         <div className="healthy-brain-content">
-          {/* <Route path="/healthy-foods" /> */}
-          <a href="/healthy-foods" value="0">
+          <Route exact path="/healthy-foods" />
+          <a href="/healthy-foods">
             <div className="image-wrapper">
-              <h3 className="health-brain">Health Foods</h3>
+              <div className="box-content">
+                <h3 className="health-brain">Brain Smart Foods</h3>
+              </div>
             </div>
           </a>
 
-          {/* <Route path="/healthy-sounds" /> */}
-          <a href="/healthy-sounds" value="0">
+          <Route exact path="/healthy-sounds" />
+          <a href="/healthy-sounds">
             <div className="image-wrapper">
-              <h3 className="health-brain">Health Sounds</h3>
+              <div className="box-content">
+                <h3 className="health-brain">Brain Smart Sounds</h3>
+              </div>
             </div>
           </a>
 
-          {/* <Route path="/healthy-memory" /> */}
-          <a href="/healthy-memory" value="0">
+          <Route exact path="/healthy-memory" />
+          <a href="/healthy-puzzles">
             <div className="image-wrapper">
-              <h3 className="health-brain">Health Memory</h3>
+              <div className="box-content">
+                <h3 className="health-brain">Brain Smart Puzzles</h3>
+              </div>
             </div>
           </a>
 
-          {/* <Route path="/healthy-movement" /> */}
-          <a href="/healthy-movement" value="0">
+          <Route exact path="/healthy-movement" />
+          <a href="/healthy-movement">
             <div className="image-wrapper">
-              <h3 className="health-brain">Health Movements</h3>
+              <div className="box-content">
+                <h3 className="health-brain">Brain Smart Movements</h3>
+              </div>
+            </div>
+          </a>
+
+          <Route exact path="/healthy-movement" />
+          <a href="/healthy-Science">
+            <div className="image-wrapper">
+              <div className="box-content">
+                <h3 className="health-brain">Brain Smart Science</h3>
+              </div>
+            </div>
+          </a>
+
+          <Route exact path="/healthy-movement" />
+          <a href="/healthy-tech">
+            <div className="image-wrapper">
+              <div className="box-content">
+                <h3 className="health-brain">Tech and Innovation</h3>
+              </div>
             </div>
           </a>
         </div>
